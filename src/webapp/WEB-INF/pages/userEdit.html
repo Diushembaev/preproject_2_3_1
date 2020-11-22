@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователь</title>
+</head>
+<body>
+    <form  method="post" action="/user">
+        <input type="hidden" name="id" th:value="${user.getId()}">
+        <input type="text" name="name" th:value="${user.getFirstName()}">
+        <input type="text" name="surname" th:value="${user.getLastName()}">
+        <input type="text" name="email" th:value="${user.getEmail()}">
+        <input type="submit" value="Изменить">
+    </form>
+</body>
+</html>

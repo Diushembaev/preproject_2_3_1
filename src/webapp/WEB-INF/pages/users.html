@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyPage</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td><b>ID</b></td>
+            <td><b>Name</b></td>
+            <td><b>Surname</b></td>
+            <td><b>Email</b></td>
+        </tr>
+        <th:block th:each="user : ${users}">
+            <tr>
+                <td th:text="${user.getId()}">
+                <td th:text="${user.getFirstName()}"></td>
+                <td th:text="${user.getLastName()}"></td>
+                <td th:text="${user.getEmail()}"></td>
+                <td>
+                    <form  method="get" action="/user">
+                        <input type="hidden" name="id" th:value="${user.getId()}">
+                        <input type="submit" value="Изменить">
+                    </form>
+                </td>
+                <td>
+                    <form  method="post" action="/users">
+                        <input type="hidden" name="id" th:value="${user.getId()}">
+                        <input type="submit" value="Удалить">
+                    </form>
+                </td>
+            </tr>
+        </th:block>
+    </table>
+    <b>Добавление нового пользователя</b>
+    <form  method="post" action="/useradd">
+        <input type="text" name="name">
+        <input type="text" name="surname">
+        <input type="text" name="email">
+        <input type="submit" value="Добавить">
+    </form>
+</body>
+</html>
